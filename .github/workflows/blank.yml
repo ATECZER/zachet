@@ -28,7 +28,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          ssh-keygen -t RSA -b 4096 -f ./ssh
+          ssh-keygen -t RSA -b 4096 
           chmod 0700 ./ssh
           docker build -t ssh-test .
           docker run --rm -dt -p 52022:22 -v ~/./ssh:/root/.ssh ssh-test
