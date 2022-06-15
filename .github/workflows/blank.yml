@@ -28,6 +28,10 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          ssh-keygen -t RSA -b 4096 -f ./ssh-shared
-          ls
-          ls ./ssh-shared
+          ssh-keygen -t RSA -b 4096 -f ./ssh
+          sudo docker run --rm -dt -p 52022:22 -v ./ssg:/root/.ssh ssh-test
+          
+      - name: ssh test
+        run: |
+          ssh -p 52022 root@127.0.0.1
+          
