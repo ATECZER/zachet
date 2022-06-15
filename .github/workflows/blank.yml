@@ -36,5 +36,12 @@ jobs:
           
       - name: ssh test
         run: |
-          ssh -i /home/runner/.ssh/id-rsa -p 52022 root@127.0.0.1
-          
+          ssh -i /home/runner/.ssh/id-rsa -p 52022 root@127.0.0.1  || true >> output.txt
+          mkdir artifacts
+          mv output.txt artifacts/
+
+      - name: Publish
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact
+          path: artifacts/
