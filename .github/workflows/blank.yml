@@ -30,7 +30,7 @@ jobs:
         run: |
           ssh-keygen -t RSA -b 4096 -f ./ssh
           sudo docker build -t ssh-test .
-          sudo docker run --rm -dt -p 52022:22 -v ./ssg:/root/.ssh ssh-test
+          sudo docker run --rm -dt -p 52022:22 -v ~/./ssh:/root/.ssh ssh-test
           
       - name: ssh test
         run: |
