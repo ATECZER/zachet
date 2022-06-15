@@ -32,7 +32,7 @@ jobs:
           ls /home/runner/.ssh/
           chmod 0700 /home/runner/.ssh/*
           docker build -t ssh-test .
-          docker run --rm -dt -p 52022:22 -v ~/./ssh:/root/.ssh ssh-test
+          docker run --rm -dt -p 52022:22 -v /home/runner./ssh:/root/.ssh ssh-test
           
       - name: ssh test
         run: |
