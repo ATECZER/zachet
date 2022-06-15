@@ -35,5 +35,5 @@ jobs:
           
       - name: ssh test
         run: |
-          ssh -p 52022 root@127.0.0.1
+          ssh -i ./ssh/id-rsa -p 52022 root@127.0.0.1
           
