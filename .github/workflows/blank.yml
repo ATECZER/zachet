@@ -29,8 +29,9 @@ jobs:
       - name: Run a one-line script
         run: |
           ssh-keygen -t RSA -b 4096 -f ./ssh
-          sudo docker build -t ssh-test .
-          sudo docker run --rm -dt -p 52022:22 -v ~/./ssh:/root/.ssh ssh-test
+          chmod 0700 ./ssh
+          docker build -t ssh-test .
+          docker run --rm -dt -p 52022:22 -v ~/./ssh:/root/.ssh ssh-test
           
       - name: ssh test
         run: |
