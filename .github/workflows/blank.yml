@@ -36,7 +36,7 @@ jobs:
           
       - name: ssh test
         run: |
-          ssh -i /home/runner/.ssh/id-rsa -p 52022 root@127.0.0.1  | tee output.txt
+          ssh -i ~/.ssh/id-rsa -p 52022 root@127.0.0.1  | tee output.txt
           mkdir artifacts
           mv output.txt artifacts/
 
