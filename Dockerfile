@@ -5,14 +5,14 @@ RUN mkdir -p /var/run/sshd
 RUN sed -ri 's/#\?PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
-RUN groupadd users && useradd -ms /bin/bash -g users user
+RUN groupadd sshgroup && useradd -ms /bin/bash -g sshgroup user
 
 
 RUN mkdir -p /home/user/.ssh
 
 COPY id_rsa.pub /home/user/.ssh/authorized_keys
  
-RUN chown user:users /home/user/.ssh/authorized_keys && chmod 600 /home/user/.ssh/authorized_keys
+RUN chown user:sshgroup /home/user/.ssh/authorized_keys && chmod 600 /home/user/.ssh/authorized_keys
 
 
 
