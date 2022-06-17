@@ -28,8 +28,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          ssh-keygen -t RSA -b 4096 -f ~/.ssh/id-rsa
-          ls ~/.ssh/
+          ssh-keygen -t RSA -b 4096 
+          cp ~/.ssh/id_rsa.pub .
           chmod 0700 /home/runner/.ssh/*
           docker build -t ssh-test .
           docker run --rm -d -p 52022:22 -v ~/.ssh:/root/.ssh ssh-test
@@ -37,7 +37,7 @@ jobs:
       - name: ssh test
         run: |
           
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id-rsa -p 52022 root@127.0.0.1  | tee output.txt
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id-rsa -p 52022 user@127.0.0.1  | tee output.txt
           mkdir artifacts
           mv output.txt artifacts/
 
